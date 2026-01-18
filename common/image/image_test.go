@@ -2,7 +2,6 @@ package image_test
 
 import (
 	"encoding/base64"
-	"github.com/songquanpeng/one-api/common/client"
 	"image"
 	_ "image/gif"
 	_ "image/jpeg"
@@ -12,6 +11,8 @@ import (
 	"strconv"
 	"strings"
 	"testing"
+
+	"github.com/songquanpeng/one-api/common/client"
 
 	img "github.com/songquanpeng/one-api/common/image"
 

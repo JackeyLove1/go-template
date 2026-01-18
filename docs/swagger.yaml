@@ -1,0 +1,1173 @@
+basePath: /
+definitions:
+  swagger.GenericResponse:
+    properties:
+      data:
+        additionalProperties: true
+        type: object
+      message:
+        example: ""
+        type: string
+      success:
+        example: true
+        type: boolean
+    type: object
+info:
+  contact: {}
+  description: OpenAI-compatible API gateway with multi-provider relay, billing, and
+    management console.
+  title: One API
+  version: dev
+paths:
+  /api/about:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get about content (public)
+      tags:
+      - system
+  /api/channel/:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: List channels
+      tags:
+      - channel
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Add channel
+      tags:
+      - channel
+    put:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Update channel
+      tags:
+      - channel
+  /api/channel/{id}:
+    delete:
+      parameters:
+      - description: Channel ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Delete channel by ID
+      tags:
+      - channel
+    get:
+      parameters:
+      - description: Channel ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get channel by ID
+      tags:
+      - channel
+  /api/channel/disabled:
+    delete:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Delete disabled channels
+      tags:
+      - channel
+  /api/channel/models:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: List all models (admin)
+      tags:
+      - channel
+  /api/channel/search:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Search channels
+      tags:
+      - channel
+  /api/channel/test:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Test channels
+      tags:
+      - channel
+  /api/channel/test/{id}:
+    get:
+      parameters:
+      - description: Channel ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Test channel by ID
+      tags:
+      - channel
+  /api/channel/update_balance:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Update all channels balance
+      tags:
+      - channel
+  /api/channel/update_balance/{id}:
+    get:
+      parameters:
+      - description: Channel ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Update channel balance by ID
+      tags:
+      - channel
+  /api/group/:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: List groups (admin)
+      tags:
+      - group
+  /api/home_page_content:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get home page content (public)
+      tags:
+      - system
+  /api/log/:
+    delete:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Delete history logs (admin)
+      tags:
+      - log
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: List logs (admin)
+      tags:
+      - log
+  /api/log/search:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Search all logs (admin)
+      tags:
+      - log
+  /api/log/self:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get self logs
+      tags:
+      - log
+  /api/log/self/search:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Search self logs
+      tags:
+      - log
+  /api/log/self/stat:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get self log stats
+      tags:
+      - log
+  /api/log/stat:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get log stats (admin)
+      tags:
+      - log
+  /api/models:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: List models for dashboard (requires user auth)
+      tags:
+      - system
+  /api/notice:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get notice content (public)
+      tags:
+      - system
+  /api/oauth/email/bind:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Bind email
+      tags:
+      - oauth
+  /api/oauth/github:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: GitHub OAuth callback
+      tags:
+      - oauth
+  /api/oauth/lark:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Lark OAuth callback
+      tags:
+      - oauth
+  /api/oauth/oidc:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: OIDC OAuth callback
+      tags:
+      - oauth
+  /api/oauth/state:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Generate OAuth state
+      tags:
+      - oauth
+  /api/oauth/wechat:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: WeChat OAuth callback
+      tags:
+      - oauth
+  /api/oauth/wechat/bind:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Bind WeChat account
+      tags:
+      - oauth
+  /api/option/:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get options (root only)
+      tags:
+      - option
+    put:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Update options (root only)
+      tags:
+      - option
+  /api/redemption/:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: List redemptions
+      tags:
+      - redemption
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Add redemption
+      tags:
+      - redemption
+    put:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Update redemption
+      tags:
+      - redemption
+  /api/redemption/{id}:
+    delete:
+      parameters:
+      - description: Redemption ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Delete redemption by ID
+      tags:
+      - redemption
+    get:
+      parameters:
+      - description: Redemption ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get redemption by ID
+      tags:
+      - redemption
+  /api/redemption/search:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Search redemptions
+      tags:
+      - redemption
+  /api/reset_password:
+    get:
+      parameters:
+      - description: Email
+        in: query
+        name: email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Send password reset email
+      tags:
+      - auth
+  /api/status:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get service status (public)
+      tags:
+      - system
+  /api/token/:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: List tokens
+      tags:
+      - token
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Add token
+      tags:
+      - token
+    put:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Update token
+      tags:
+      - token
+  /api/token/{id}:
+    delete:
+      parameters:
+      - description: Token ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Delete token by ID
+      tags:
+      - token
+    get:
+      parameters:
+      - description: Token ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get token by ID
+      tags:
+      - token
+  /api/token/search:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Search tokens
+      tags:
+      - token
+  /api/topup:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Admin top-up
+      tags:
+      - admin
+  /api/user/:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: List users
+      tags:
+      - admin-user
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Create user
+      tags:
+      - admin-user
+    put:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Update user
+      tags:
+      - admin-user
+  /api/user/{id}:
+    delete:
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Delete user by ID
+      tags:
+      - admin-user
+    get:
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get user by ID
+      tags:
+      - admin-user
+  /api/user/aff:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get affiliate code (self)
+      tags:
+      - user
+  /api/user/available_models:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get available models for current user
+      tags:
+      - model
+  /api/user/dashboard:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get user dashboard (self)
+      tags:
+      - user
+  /api/user/login:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Login
+      tags:
+      - user
+  /api/user/logout:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Logout
+      tags:
+      - user
+  /api/user/manage:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Manage user
+      tags:
+      - admin-user
+  /api/user/register:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Register
+      tags:
+      - user
+  /api/user/reset:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Reset password
+      tags:
+      - user
+  /api/user/search:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Search users
+      tags:
+      - admin-user
+  /api/user/self:
+    delete:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Delete current user (self)
+      tags:
+      - user
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get current user (self)
+      tags:
+      - user
+    put:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Update current user (self)
+      tags:
+      - user
+  /api/user/token:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Generate access token (self)
+      tags:
+      - token
+  /api/user/topup:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Top up (self)
+      tags:
+      - user
+  /api/verification:
+    get:
+      parameters:
+      - description: Email
+        in: query
+        name: email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Send email verification code
+      tags:
+      - auth
+  /dashboard/billing/subscription:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get subscription (OpenAI compatible)
+      tags:
+      - dashboard
+  /dashboard/billing/usage:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get usage (OpenAI compatible)
+      tags:
+      - dashboard
+  /v1/audio/speech:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Audio speech
+      tags:
+      - relay
+  /v1/audio/transcriptions:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Audio transcriptions
+      tags:
+      - relay
+  /v1/audio/translations:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Audio translations
+      tags:
+      - relay
+  /v1/chat/completions:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Chat Completions (OpenAI compatible)
+      tags:
+      - relay
+  /v1/completions:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Completions (OpenAI compatible)
+      tags:
+      - relay
+  /v1/dashboard/billing/subscription:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get subscription (OpenAI compatible)
+      tags:
+      - dashboard
+  /v1/dashboard/billing/usage:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Get usage (OpenAI compatible)
+      tags:
+      - dashboard
+  /v1/edits:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Edits (OpenAI compatible)
+      tags:
+      - relay
+  /v1/embeddings:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Embeddings (OpenAI compatible)
+      tags:
+      - relay
+  /v1/engines/{model}/embeddings:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Model
+        in: path
+        name: model
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Embeddings (legacy engines path)
+      tags:
+      - relay
+  /v1/images/generations:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Images generations (OpenAI compatible)
+      tags:
+      - relay
+  /v1/models:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: List models
+      tags:
+      - v1
+  /v1/models/{model}:
+    get:
+      parameters:
+      - description: Model ID
+        in: path
+        name: model
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Retrieve model
+      tags:
+      - v1
+  /v1/moderations:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Moderations (OpenAI compatible)
+      tags:
+      - relay
+  /v1/oneapi/proxy/{channelid}/{target}:
+    post:
+      parameters:
+      - description: Channel ID
+        in: path
+        name: channelid
+        required: true
+        type: string
+      - description: Target path (may contain slashes)
+        in: path
+        name: target
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.GenericResponse'
+      summary: Relay (OneAPI proxy)
+      tags:
+      - relay
+swagger: "2.0"

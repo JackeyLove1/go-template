@@ -23,6 +23,11 @@ import (
 	"github.com/songquanpeng/one-api/router"
 )
 
+// @title One API
+// @version dev
+// @description OpenAI-compatible API gateway with multi-provider relay, billing, and management console.
+// @BasePath /
+
 //go:embed web/build/*
 var buildFS embed.FS
 
